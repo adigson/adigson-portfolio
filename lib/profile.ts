@@ -74,6 +74,8 @@ export const profile = {
         "The API models products, inventory quantities, expiry dates, and case-insensitive SKU lookups.",
       stack: ["Node.js", "Express", "JavaScript", "REST API"],
       url: "https://github.com/adigson/retail-inventory-expiry-management-api",
+      caseStudyUrl:
+        "https://github.com/adigson/retail-inventory-expiry-management-api/blob/main/docs/case-study.md",
     },
     {
       name: "CRUD API / Todo API",
@@ -90,6 +92,7 @@ export const profile = {
         "Node.js and Express REST endpoints operate on an in-memory data store for CRUD practice.",
       stack: ["Node.js", "Express", "JavaScript", "REST"],
       url: "https://github.com/adigson/week3-crud-api",
+      caseStudyUrl: null,
     },
     {
       name: "URL Shortener",
@@ -105,6 +108,7 @@ export const profile = {
         "A learning exercise around URL validation, short codes, and HTTP redirect behaviour.",
       stack: ["JavaScript", "Node.js", "API"],
       url: "https://github.com/adigson/boilerplate-project-urlshortener",
+      caseStudyUrl: null,
     },
   ],
 };
