@@ -231,6 +231,11 @@ export default function Dashboard() {
                 </div>
                 <div className="project-insight"><span className="insight-icon">{view === "ux" ? "◎" : "⌘"}</span><p>{view === "ux" ? project.ux : project.system}</p></div>
                 <div className="tag-row">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                {project.caseStudyUrl && (
+                  <a className="case-study-link" href={project.caseStudyUrl} target="_blank" rel="noreferrer">
+                    Read case study <span aria-hidden="true">↗</span>
+                  </a>
+                )}
               </article>
             );
           })}
