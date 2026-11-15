@@ -214,17 +214,23 @@ export default function Dashboard() {
 
       <section className="content-section work-section" id="work">
         <div className="section-heading">
-          <div><div className="eyebrow"><span className="eyebrow-line" /> SELECTED BUILDS / 01</div><h2>Small projects.<br /><span>Real foundations.</span></h2></div>
-          <p>From useful APIs to thoughtful interactions, I like understanding both the people using a product and the systems powering it.</p>
+          <div><div className="eyebrow"><span className="eyebrow-line" /> SELECTED BUILDS / 01</div><h2>Building one system<br /><span>more deeply.</span></h2></div>
+          <p>The Retail Inventory API is my flagship case study: a tested foundation with a clear, honest roadmap for what comes next.</p>
         </div>
         <div className="project-grid">
           {profile.projects.map((project, index) => {
             const view = projectViews[project.name] ?? "ux";
             return (
-              <article className="project-card" key={project.name}>
-                <div className="project-top"><span className="project-number">0{index + 1}</span><span>{project.kind} / {project.period}</span><a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.name} on GitHub`}>↗</a></div>
+              <article className={`project-card${project.featured ? " project-card-featured" : ""}`} key={project.name}>
+                <div className="project-top"><span className="project-number">0{index + 1}</span><span>{project.kind} / {project.period}</span>{project.featured && <span className="project-featured-label">FLAGSHIP CASE STUDY</span>}<a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.name} on GitHub`}>↗</a></div>
                 <h3>{project.name}</h3>
                 <p className="project-description">{project.description}</p>
+                {project.featured && (
+                  <div className="project-roadmap" aria-label="Project status">
+                    <div><span>CURRENT SCOPE</span><strong>{project.currentPhase}</strong></div>
+                    <div><span>NEXT MILESTONE</span><strong>{project.nextMilestone}</strong></div>
+                  </div>
+                )}
                 <div className="toggle-row" role="group" aria-label={`${project.name} view`}>
                   <button aria-pressed={view === "ux"} className={view === "ux" ? "toggle-active" : ""} onClick={() => setProjectViews((state) => ({ ...state, [project.name]: "ux" }))}>THE UX VIEW</button>
                   <button aria-pressed={view === "system"} className={view === "system" ? "toggle-active" : ""} onClick={() => setProjectViews((state) => ({ ...state, [project.name]: "system" }))}>THE SYSTEM VIEW</button>
