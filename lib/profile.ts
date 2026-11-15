@@ -63,6 +63,9 @@ export const profile = {
       name: "Retail Inventory & Expiry Management API",
       kind: "REST API",
       period: "2026",
+      featured: true,
+      currentPhase: "In-memory API with documented tests",
+      nextMilestone: "PostgreSQL persistence and migrations",
       description:
         "A REST API for managing retail products, inventory levels, expiry dates, stock alerts, and case-insensitive SKU uniqueness.",
       details: [
