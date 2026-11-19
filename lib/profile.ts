@@ -3,7 +3,7 @@ export const profile = {
   fullName: "Bolaji Musibau Anifowose",
   title: "Backend Developer",
   location: "Abeokuta, Nigeria",
-  phone: "+234 806 318 9660",
+  phone: "+234 806 319 8660",
   email: "bolajimusibau20@gmail.com",
   github: "https://github.com/adigson",
   linkedin: "https://www.linkedin.com/in/musibau-bolaji/",
