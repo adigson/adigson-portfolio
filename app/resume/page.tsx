@@ -7,6 +7,15 @@ import styles from "./resume.module.css";
 export const metadata: Metadata = {
   title: "Resume | Musibau Bolaji",
   description: "Backend developer resume for Musibau Bolaji.",
+  alternates: {
+    canonical: "/resume",
+  },
+  openGraph: {
+    title: "Resume | Musibau Bolaji",
+    description: "Print-ready resume for Musibau Bolaji, backend developer.",
+    type: "website",
+    url: "/resume",
+  },
 };
 
 export default function ResumePage() {

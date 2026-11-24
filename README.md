@@ -33,7 +33,7 @@ To verify persistence, create a separate empty test database and place its direc
 
 ## Deploy to Vercel
 
-Import this repository into Vercel, set `DATABASE_URL` if using the database-backed features, and deploy. Vercel detects the Next.js app automatically. Update the canonical domain in `app/layout.tsx` if the production URL differs from `adigson.vercel.app`.
+Import this repository into Vercel, set `DATABASE_URL` if using the database-backed features, and deploy. Vercel detects the Next.js app automatically. The current public URL is `https://adigson-portfolio.vercel.app`; update the canonical domain in `app/layout.tsx` if it changes.
 
 ## Personal details
 
