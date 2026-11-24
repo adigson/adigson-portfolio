@@ -15,17 +15,17 @@ Open `http://localhost:3000/resume` and choose **Print / Save as PDF** to export
 
 ## Enable guestbook and short links
 
-1. Create a Neon project and copy its pooled connection string.
-2. Run the SQL in `db/schema.sql` in the Neon SQL Editor.
-3. Copy `.env.example` to `.env.local` and set `DATABASE_URL` to the connection string.
+1. The existing app uses Neon's serverless driver. Its Free plan is currently $0/month and requires no card, within its published quotas; do not upgrade to a paid plan. A local PostgreSQL server is also free, but using it with the app requires swapping the runtime driver.
+2. Copy `.env.example` to `.env.local`. Set `DATABASE_URL` to the pooled connection string for the app and `DATABASE_URL_UNPOOLED` to the direct connection string for migrations.
+3. Run `npm run db:migrate` to create or update the tables from the versioned SQL migrations in `db/migrations`.
 4. Restart the development server.
-5. Add the same `DATABASE_URL` in the Vercel project settings for Production, Preview, and Development as appropriate.
+5. Add `DATABASE_URL` to the Vercel project settings for Production, Preview, and Development as appropriate. Run migrations separately with the direct connection string before deploying schema-dependent changes.
 
 The API validates guestbook input and only accepts HTTP(S) destinations for short links. If the database is not configured, these tools return a clear setup error rather than pretending a write succeeded.
 
-This workspace is linked to the Neon project `cold-water-35403392` on its `production` branch using the Neon CLI. Local link metadata (`.neon`) and credentials (`.env.local`) are ignored by Git. The required application tables have been created from `db/schema.sql`.
+To verify persistence, create a separate empty test database and place its direct connection string in `.env.test.local` as `TEST_DATABASE_URL`. Run `npm run db:test`. The test applies migrations to that database, inserts a temporary guestbook entry, closes its connection, verifies the entry through a new connection, and then removes it. Never point `TEST_DATABASE_URL` at a database containing data you need to keep.
 
-`neon.ts` currently declares an empty Neon service policy. Running `neon deploy` applies or checks that Neon policy; it does not create or migrate application tables. Apply future schema changes separately through the Neon SQL Editor or a database migration tool.
+`neon.ts` currently declares an empty Neon service policy. Running `neon deploy` applies or checks that Neon policy; it does not create or migrate application tables. Keep schema changes in `db/migrations` and run `npm run db:migrate` with a direct (unpooled) URL. Neon Free currently includes 1 GB of database storage per project, 100 compute-unit hours per project, and 5 GB of public network transfer per project; check [Neon's current pricing](https://neon.com/pricing) before relying on hosted limits.
 
 ## GitHub data
 
