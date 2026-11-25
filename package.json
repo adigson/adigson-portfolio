@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node --env-file-if-exists=.env.local db/migrate.mjs",
+    "db:test": "node --env-file-if-exists=.env.local --env-file-if-exists=.env.test.local --test db/persistence.test.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.8.6",
     "@neon/env": "^1.5.3",
     "@neondatabase/serverless": "^1.2.0",
-    "next": "^16.4.0",
+    "next": "^16.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
@@ -20,6 +22,7 @@
     "@types/node": "^22.18.6",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
+    "pg": "^8.23.1",
     "typescript": "^5.9.2"
   }
 }
